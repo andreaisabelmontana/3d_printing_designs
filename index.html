@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>3D-Printable Parts Library — Built From Scratch</title>
+<meta name="description" content="An original from-scratch build of a catalogued library of 3D-printable parts: STL files for mounts, brackets, jigs and supports, organised so a part can be found and printed in minutes." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --accent:#16a34a; --accent-soft:#e4f6ea; --ink:#16201f; --muted:#5d6b69;
+    --line:#dfe5e3; --bg:#fbfcfb; --card:#ffffff;
+    --serif:'Fraunces',Georgia,serif; --sans:'Inter',system-ui,sans-serif; --mono:'JetBrains Mono',monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:0 28px}
+  a{color:var(--accent);text-decoration:none}
+  a:hover{text-decoration:underline}
+  code{font-family:var(--mono);font-size:.86em;background:var(--accent-soft);padding:.1em .4em;border-radius:4px;color:#15803d}
+  h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.15;letter-spacing:-.01em}
+  /* Header */
+  header.hero{padding:88px 0 56px;border-bottom:1px solid var(--line)}
+  .eyebrow{font-family:var(--mono);font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 22px}
+  h1{font-size:clamp(2.6rem,6vw,4.1rem);margin:0 0 18px}
+  .lede{font-size:1.22rem;color:var(--muted);max-width:62ch;margin:0 0 28px}
+  .meta{display:flex;flex-wrap:wrap;gap:10px;font-size:.82rem}
+  .chip{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;border:1px solid var(--line);border-radius:999px;padding:5px 12px;color:var(--muted);background:var(--card)}
+  /* Sections */
+  section{padding:54px 0;border-bottom:1px solid var(--line)}
+  .kicker{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+  h2{font-size:clamp(1.7rem,3.4vw,2.3rem);margin:0 0 20px}
+  h3{font-size:1.2rem;margin:0 0 6px}
+  p{margin:0 0 18px;max-width:68ch}
+  .muted{color:var(--muted)}
+  /* Stack grid */
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:8px}
+  .tool{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px}
+  .tool .t{font-family:var(--mono);font-size:.78rem;color:var(--accent);letter-spacing:.04em;margin-bottom:8px}
+  .tool h3{font-size:1.05rem;font-family:var(--sans);font-weight:600;margin-bottom:6px}
+  .tool p{font-size:.92rem;color:var(--muted);margin:0}
+  /* Pipeline / modules */
+  ol.flow{counter-reset:s;list-style:none;padding:0;margin:24px 0 0}
+  ol.flow li{position:relative;padding:18px 0 18px 56px;border-top:1px solid var(--line)}
+  ol.flow li:before{counter-increment:s;content:counter(s,decimal-leading-zero);position:absolute;left:0;top:18px;font-family:var(--mono);font-size:.8rem;color:var(--accent);border:1px solid var(--line);border-radius:8px;width:38px;height:38px;display:grid;place-items:center;background:var(--card)}
+  ol.flow li h3{font-family:var(--sans);font-size:1.02rem;font-weight:600;margin:0 0 4px}
+  ol.flow li p{margin:0;font-size:.93rem;color:var(--muted)}
+  .tag{display:inline-block;font-family:var(--mono);font-size:.68rem;padding:2px 7px;border-radius:5px;margin-left:8px;vertical-align:middle}
+  .tag.on{background:#e6f7ec;color:#1c7a43}
+  .tag.off{background:#fdecea;color:#b23b2c}
+  /* Callout */
+  .callout{background:var(--accent-soft);border:1px solid #c9ecd5;border-radius:14px;padding:24px 26px;margin-top:8px}
+  .callout p:last-child{margin:0}
+  /* Reflection list */
+  ul.learn{list-style:none;padding:0;margin:8px 0 0}
+  ul.learn li{padding:14px 0 14px 30px;border-top:1px solid var(--line);position:relative;color:var(--muted);max-width:68ch}
+  ul.learn li:before{content:"→";position:absolute;left:0;color:var(--accent);font-family:var(--mono)}
+  ul.learn li b{color:var(--ink);font-weight:600}
+  /* Footer */
+  footer{padding:48px 0 80px}
+  .credit{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px}
+  .credit .k{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+  footer .fine{font-size:.8rem;color:var(--muted);margin-top:22px;text-align:center}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">From-Scratch Build · Fabrication</p>
+    <h1>3D-Printable Parts Library</h1>
+    <p class="lede">A catalogued collection of ready-to-print parts — mounts, brackets, jigs, cases and supports — each with a preview, a description and a download. Built from scratch to learn how to turn a messy pile of model files into a library people can actually use.</p>
+    <div class="meta">
+      <span class="chip">STL</span><span class="chip">3D printing</span><span class="chip">CAD</span>
+      <span class="chip">Version control</span><span class="chip">Documentation</span>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <p class="kicker">What it is</p>
+    <h2>A shelf for physical parts, kept in software</h2>
+    <p>When a workshop prints things regularly, the model files pile up fast: a bracket here, a custom case there, a tiny adapter someone made once and will need again in six months. Without a system, those <b>STL files</b> get lost on laptops and re-modelled from scratch. This build is the fix — a single, browsable library where every printable part has a home.</p>
+    <p>Each entry carries a thumbnail so you can recognise the part at a glance, a short description of what it's for, and a direct download of the model ready to slice and print. The whole thing is version-controlled, so the library has history: you can see when a part was added or revised, and nothing ever quietly disappears.</p>
+    <div class="callout">
+      <p><b>The core idea I wanted to learn:</b> a parts library is a documentation problem as much as a CAD one. The models are easy; what makes them <i>reusable</i> is the catalogue around them — names, pictures, purposes and a stable place to download from.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kicker">The stack</p>
+    <h2>What holds the library together</h2>
+    <p class="muted">The point of this rebuild was the organising system, not any single model. Here is what each piece does.</p>
+    <div class="grid">
+      <div class="tool"><div class="t">geometry</div><h3>STL files</h3><p>The universal 3D-print format — a mesh of triangles describing each part's surface. The actual payload you send to a slicer.</p></div>
+      <div class="tool"><div class="t">catalogue</div><h3>Indexed table</h3><p>A structured table pairing every model with a name, description, preview and download link — the map that makes the pile searchable.</p></div>
+      <div class="tool"><div class="t">previews</div><h3>Thumbnail renders</h3><p>A small image of each part so you can identify it without opening a CAD program. Recognition beats reading every time.</p></div>
+      <div class="tool"><div class="t">structure</div><h3>Folder hierarchy</h3><p>Parts grouped by what they belong to — robot mounts, hardware-bench clamps, enclosure halves — so related files live together.</p></div>
+      <div class="tool"><div class="t">history</div><h3>Git versioning</h3><p>Every addition and revision is tracked. The library has a timeline, and an accidental deletion is always recoverable.</p></div>
+      <div class="tool"><div class="t">workflow</div><h3>Slicer-ready exports</h3><p>Files are stored print-ready, so the path from "I need that part" to a job on the printer is just download and slice.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kicker">From need to printed part</p>
+    <h2>How you use the library</h2>
+    <p>The whole point is to shorten the distance between needing a part and holding it. That path is five quick steps:</p>
+    <ol class="flow">
+      <li><h3>Browse the catalogue <span class="tag on">live</span></h3><p>Scan the indexed table by thumbnail and description until you spot the part you need.</p></li>
+      <li><h3>Check the details <span class="tag on">live</span></h3><p>Read what it's for and which assembly it belongs to, so you grab the right variant.</p></li>
+      <li><h3>Download the STL <span class="tag on">live</span></h3><p>One click pulls the print-ready model straight from the library.</p></li>
+      <li><h3>Slice & print <span class="tag on">live</span></h3><p>Drop it into a slicer, pick your material, and send it to the printer.</p></li>
+      <li><h3>Contribute back <span class="tag on">live</span></h3><p>Made a new part or improved one? Add it to the catalogue with its own entry so the next person finds it too.</p></li>
+      <li><h3>Auto-generated index <span class="tag off">future</span></h3><p>A script that builds the catalogue table from the folder contents automatically. Left as future work in this build.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kicker">What's inside</p>
+    <h2>The kinds of parts it holds</h2>
+    <p>The library leans toward the unglamorous, endlessly-useful pieces a working space actually needs:</p>
+    <ul class="learn">
+      <li><b>Mounts & bases:</b> structures that hold equipment steady — bases, supports and rest positions for robot arms.</li>
+      <li><b>Clamps & holders:</b> truss clamps, cable spools and wall hooks that tame the chaos of a hardware bench.</li>
+      <li><b>Enclosures:</b> split cases and lids that wrap electronics and speakers in something durable.</li>
+      <li><b>Jigs & adapters:</b> small bespoke pieces — markers, connectors, switch housings — that solve one specific problem perfectly.</li>
+    </ul>
+    <p class="muted" style="margin-top:18px">Every one is stored as a downloadable <code>.stl</code>, grouped with its siblings so the next person never has to model it twice.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <p class="kicker">Reflection</p>
+    <h2>What building it taught me</h2>
+    <ul class="learn">
+      <li><b>The metadata is the product.</b> Anyone can dump STL files in a folder. The value is the catalogue — names, pictures and purposes — that turns storage into a library.</li>
+      <li><b>A thumbnail is worth a thousand filenames.</b> One small render lets you recognise a part instantly; without it, browsing means opening files one by one.</li>
+      <li><b>Version control isn't just for code.</b> Putting models under Git gave the parts a history and a safety net — revisions are visible, deletions are reversible.</li>
+      <li><b>Good structure invites contribution.</b> Once the pattern for an entry was clear, adding a new part became obvious — which is what keeps a shared library alive.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="credit">
+      <div class="k">About this build</div>
+      <p style="margin:0">An original, from-scratch build by <b>Andrea</b> — written to learn how a collection of 3D-printable models becomes a documented, version-controlled library that anyone can browse and print from. Plain HTML/CSS, deployed on GitHub Pages.</p>
+    </div>
+    <p class="fine">Built from scratch by Andrea · one of an ongoing series of learning builds.</p>
+  </div>
+</footer>
+</body>
+</html>
